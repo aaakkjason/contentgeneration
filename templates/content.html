@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generated Content</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generated Content</h1>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                {% for content in generated_content %}
+                    <div class="swiper-slide">
+                        <h2>{{ content.title }}</h2>
+                        <p>{{ content.content }}</p>
+                        <img src="{{ content.image }}" alt="{{ content.title }}">
+                    </div>
+                {% endfor %}
+            </div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        <a href="/">Go back</a>
+    </div>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: false,
+            slidesPerView: 2,
+            slidesPerGroup: 2,
+            spaceBetween: 30,
+            centeredSlides: true,
+            loop: false,
+            effect: 'slide',
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+    </script>
+</body>
+</html>
